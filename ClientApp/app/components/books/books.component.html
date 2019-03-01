@@ -1,0 +1,51 @@
+﻿<span class="text-danger" *ngIf="error">{{error}}</span>
+<div *ngIf="!error">
+    <h2>Books list</h2>
+    <div class="row">
+        <div class="col-md-7">
+            <a (click)="gotoForm('')">Create New</a>
+            <table class="table table-hover table-primary table-bordered">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let book of books">
+                        <td>{{book.title}}</td>
+                        <td>{{book.price}}</td>
+                        <td>
+                            <button class="btn btn-primary" (click)="gotoForm(book.bookId)">Edit</button>
+                            <button class="btn btn-primary" (click)="viewDetail(book)">Details</button>
+                            <button class="btn btn-danger" (click)="delete(book, $event)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-5 panel panel-primary" *ngIf="book">
+            <h4 class="panel-heading text-center">Book details</h4>
+            <div class="panel-body">
+                <table>
+
+                    <tr>
+                        <td style="font-weight:bold">Title: </td>
+                        <td>{{book.title}}</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold">Author: </td>
+                        <td>{{book.author}}</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold">Price: </td>
+                        <td>{{book.price}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
